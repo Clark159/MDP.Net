@@ -7,7 +7,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "bootstrap": "^5.1.0"
+    "admin-lte": "^3.1.0"
   },
   "scripts": {
     "publish": "npm install && gulp publish"

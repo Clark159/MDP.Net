@@ -1,6 +1,10 @@
 // variables
-var libs = [
-    { name: "bootstrap", value: "./node_modules/bootstrap/dist/**/*.*" }
+var libraryList = [
+    { name: "admin-lte", path: "./node_modules/admin-lte/dist/**/", src: ["*.min.css", "*.min.js"] },
+    { name: "bootstrap", path: "./node_modules/bootstrap/dist/**/", src: ["*.min.css", "*.min.js", "*.min.js.map"] },
+    { name: "jquery", path: "./node_modules/jquery/dist/**/", src: ["*.min.js"] },
+    { name: "fontawesome-free", path: "./node_modules/@fortawesome/fontawesome-free/**/", src: ["*.min.css*", "*.min.js"] },
+    { name: "fontawesome-free", path: "./node_modules/@fortawesome/fontawesome-free/*webfonts*/", src: ["*"] }
 ];
 
 // require
@@ -8,16 +12,17 @@ var gulp = require("gulp");
 var rimraf = require("rimraf");
 
 // task
-gulp.task("libs-clean", function (cb) {
+gulp.task("lib-clean", function (cb) {
     rimraf("./wwwroot/lib/", cb);
 });
 
-gulp.task("libs-copy", function (done) {
-    libs.forEach(function (item) {
-        gulp.src(item.value)
-            .pipe(gulp.dest("./wwwroot/lib/" + item.name));
-        done()
+gulp.task("lib-copy", function (done) {
+    libraryList.forEach(function (library) {
+        library.src.forEach(function (src) {
+            gulp.src(library.path + src).pipe(gulp.dest("./wwwroot/lib/" + library.name));
+        });
+        done();
     });
 });
 
-gulp.task("publish", gulp.series("libs-clean", "libs-copy"));
+gulp.task("publish", gulp.series("lib-clean", "lib-copy"));
