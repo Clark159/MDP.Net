@@ -350,4 +350,4 @@ MigrationBackup/
 .ionide/
 
 # JavaScript Library
-wwwroot/lib/
+**/wwwroot/lib
