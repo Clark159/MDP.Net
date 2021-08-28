@@ -1,5 +1,25 @@
 
-
+/*sidebar-overlay*/
 .sidebar-open #sidebar-overlay {
 	display: block;
+}
+
+
+/*navbar-brand-toggle*/
+.navbar-brand-toggle[aria-expanded="false"]:last-child::after {
+	font-family: "Font Awesome 5 Free";
+	content: "\f107";
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: 900;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand-toggle[aria-expanded="true"]:last-child::after {
+	font-family: "Font Awesome 5 Free";
+	content: "\f106";
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: 900;
+	color: rgba(0, 0, 0, 0.5);
 }
